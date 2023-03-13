@@ -1,4 +1,4 @@
-package com.example.eminyazanpokemon.view
+package com.example.eminyazanpokemon.view.detail
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.eminyazanpokemon.R
-import com.example.eminyazanpokemon.viewmodel.PokemonDetailViewModel
+import com.example.eminyazanpokemon.view.detail.viewmodel.PokemonDetailViewModel
 
 class PokemonDetailFragment : Fragment() {
 

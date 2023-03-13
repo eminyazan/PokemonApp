@@ -6,7 +6,7 @@
     <data>
         <variable
             name="pokemon"
-            type="com.example.eminyazanpokemon.model.PokemonModel" />
+            type="com.example.eminyazanpokemon.model.PokemonDetailModel" />
     </data>
 
     <LinearLayout

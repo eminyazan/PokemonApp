@@ -8,17 +8,15 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import com.example.eminyazanpokemon.databinding.ActivityMainBinding
 import com.example.eminyazanpokemon.manager.AppConnectivityManager
 import com.example.eminyazanpokemon.service.FloatingWindowApp
-import com.example.eminyazanpokemon.view.PokemonListFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private lateinit var appConnectivityManager: AppConnectivityManager
@@ -28,72 +26,74 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //View binding view
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(R.layout.activity_main)
 
+//        binding.fragmentContainerView.visibility = View.VISIBLE
+//        supportFragmentManager.commit {
+//            setReorderingAllowed(true)
+//            add<PokemonListFragment>(R.id.fragment_container_view)
+//        }
 
-        //connection manager
-        appConnectivityManager = AppConnectivityManager(this)
-
-
-        appConnectivityManager.observe(this) { isNetworkAvailable ->
-            isNetworkAvailable?.let { internet ->
-                if (internet) {
-
-                    // kill service
-                    if (isServiceRunning()) {
-                        stopService(Intent(this@MainActivity, FloatingWindowApp::class.java))
-                    }
-
-
-                    if (checkPermission()) {
-                        //show fragment we have permission and internet
-                        binding.fragmentContainerView.visibility = View.VISIBLE
-                        supportFragmentManager.commit {
-                            setReorderingAllowed(true)
-                            add<PokemonListFragment>(R.id.fragment_container_view)
-                        }
-
-                        //close permission button we have permission
-                        binding.btnOverlayPermissionButton.visibility = View.GONE
-
-
-                        //we have internet
-                        binding.btnNoInternetRetry.visibility = View.GONE
-                        binding.tvNoInternet.visibility = View.GONE
-
-
-                    } else {
-                        //we have internet we do not have permission
-                        binding.btnNoInternetRetry.visibility = View.GONE
-                        binding.tvNoInternet.visibility = View.GONE
-
-                        //Show button we do not have permission
-                        binding.btnOverlayPermissionButton.visibility = View.VISIBLE
-                        binding.btnOverlayPermissionButton.setOnClickListener {
-                            requestPermission()
-                        }
-
-                    }
-
-
-                } else {
-                    // No internet
-                    binding.fragmentContainerView.visibility = View.GONE
-                    binding.btnOverlayPermissionButton.visibility = View.GONE
-
-                    binding.btnNoInternetRetry.visibility = View.VISIBLE
-                    binding.tvNoInternet.visibility = View.VISIBLE
-
-                    binding.btnNoInternetRetry.setOnClickListener {
-                        appConnectivityManager.checkValidNetworks()
-                    }
-                }
-
-            }
-        }
+//        //connection manager
+//        appConnectivityManager = AppConnectivityManager(this)
+//
+//
+//        appConnectivityManager.observe(this) { isNetworkAvailable ->
+//            isNetworkAvailable?.let { internet ->
+//                if (internet) {
+//
+//                    // kill service
+//                    if (isServiceRunning()) {
+//                        stopService(Intent(this@MainActivity, FloatingWindowApp::class.java))
+//                    }
+//
+//
+//                    if (checkPermission()) {
+//                        //show fragment we have permission and internet
+//                        binding.fragmentContainerView.visibility = View.VISIBLE
+//                        supportFragmentManager.commit {
+//                            setReorderingAllowed(true)
+//                            add<PokemonListFragment>(R.id.fragment_container_view)
+//                        }
+//
+//                        //close permission button we have permission
+//                        binding.btnOverlayPermissionButton.visibility = View.GONE
+//
+//
+//                        //we have internet
+//                        binding.btnNoInternetRetry.visibility = View.GONE
+//                        binding.tvNoInternet.visibility = View.GONE
+//
+//
+//                    } else {
+//                        //we have internet we do not have permission
+//                        binding.btnNoInternetRetry.visibility = View.GONE
+//                        binding.tvNoInternet.visibility = View.GONE
+//
+//                        //Show button we do not have permission
+//                        binding.btnOverlayPermissionButton.visibility = View.VISIBLE
+//                        binding.btnOverlayPermissionButton.setOnClickListener {
+//                            requestPermission()
+//                        }
+//
+//                    }
+//
+//
+//                } else {
+//                    // No internet
+//                    binding.fragmentContainerView.visibility = View.GONE
+//                    binding.btnOverlayPermissionButton.visibility = View.GONE
+//
+//                    binding.btnNoInternetRetry.visibility = View.VISIBLE
+//                    binding.tvNoInternet.visibility = View.VISIBLE
+//
+//                    binding.btnNoInternetRetry.setOnClickListener {
+//                        appConnectivityManager.checkValidNetworks()
+//                    }
+//                }
+//
+//            }
+//        }
 
     }
 

@@ -93,4 +93,39 @@ class AppConnectivityManager(context: Context) : LiveData<Boolean>() {
             }
         }
     }
+
+
+
+    /*
+    *
+    *
+    *
+    //TODO internet yok butonu ve izin ver bıtonu
+     <!-- no internet widgets -->
+    <TextView
+        android:id="@+id/tvNoInternet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="There is no internet connection!!"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnNoInternetRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retry"
+        android:visibility="gone" />
+
+    <!-- permission button-->
+    <Button
+        android:id="@+id/btnOverlayPermissionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Give me overlay permission"
+        android:visibility="gone" />
+
+    *
+    *
+    *
+    * */
 }

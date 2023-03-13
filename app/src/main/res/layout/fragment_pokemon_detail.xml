@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- data binding pokemon model -->
     <data>
+
         <variable
-            name="pokemon"
-            type="com.example.eminyazanpokemon.model.PokemonModel" />
+            name="pokemonDetail"
+            type="com.example.eminyazanpokemon.model.PokemonDetailModel" />
     </data>
 
     <LinearLayout
-
 
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        tools:context=".view.PokemonDetailFragment"
         android:orientation="vertical"
-        >
+        tools:context=".view.detail.PokemonDetailFragment">
 
         <ImageView
             android:id="@+id/ivWindowPokemonImage"
+            load_pokemon_image="@{pokemonDetail.id}"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background"
-            android:contentDescription="image" />
+            android:contentDescription="image"
+            android:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/tvDetailPokemonName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:text="@{pokemon.name}"
+            android:text="@{pokemonDetail.name}"
             android:textSize="25sp"
             android:textStyle="normal" />
 
@@ -43,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:text="@{pokemon.height}"
+            android:text="@{pokemonDetail.height}"
             android:textSize="25sp"
             android:textStyle="normal" />
 
@@ -52,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:text="@{pokemon.weight}"
+            android:text="@{pokemonDetail.weight}"
             android:textSize="25sp"
             android:textStyle="normal" />
 
@@ -60,7 +59,7 @@
             android:id="@+id/btnDetailOpenWindow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{`Show ` + pokemon.name + ` in window`}"
+            android:text="@{`Show ` + pokemonDetail.name + ` in window`}"
             android:textSize="19sp"
             android:textStyle="normal" />
 

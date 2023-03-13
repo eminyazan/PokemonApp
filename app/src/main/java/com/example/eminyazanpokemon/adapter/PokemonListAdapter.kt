@@ -2,35 +2,45 @@ package com.example.eminyazanpokemon.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.eminyazanpokemon.R
 import com.example.eminyazanpokemon.databinding.PokemonRowItemBinding
 import com.example.eminyazanpokemon.model.PokemonModel
 
 
-class PokemonListAdapter(
-    private val pokemons: ArrayList<PokemonModel>,
-) :
-    RecyclerView.Adapter<PokemonListAdapter.LaunchViewHolder>() {
+class PokemonListAdapter(private var clickListener: PokemonClickListener) :
+    RecyclerView.Adapter<PokemonListAdapter.MViewHolder>() {
 
-    private lateinit var binding: PokemonRowItemBinding
+    private var pokemons = emptyList<PokemonModel>()
+    override fun getItemCount(): Int = pokemons.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MViewHolder = MViewHolder.from(parent)
 
-    inner class LaunchViewHolder(var customView: PokemonRowItemBinding) :
-        RecyclerView.ViewHolder(customView.root)
+    override fun onBindViewHolder(holder: MViewHolder, position: Int) =
+        holder.bind(clickListener, pokemons[position])
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        binding = DataBindingUtil.inflate(inflater, R.layout.pokemon_row_item, parent, false)
-        return LaunchViewHolder(binding)
+    fun setPokemonList(newList: List<PokemonModel>) {
+        pokemons = newList
+        notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: LaunchViewHolder, position: Int) {
-        holder.customView.pokemon = pokemons[position]
+
+    class MViewHolder(private val binding: PokemonRowItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(clickListener: PokemonClickListener, pokemon: PokemonModel) {
+            binding.clickListener = clickListener
+            binding.pokemon = pokemon
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): MViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = PokemonRowItemBinding.inflate(layoutInflater, parent, false)
+                return MViewHolder(binding)
+            }
+        }
+
+
     }
 
-    override fun getItemCount(): Int {
-        return pokemons.size
-    }
 
 }
