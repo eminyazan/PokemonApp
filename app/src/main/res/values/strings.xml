@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Emin Yazan Pokemon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="common_ok">OK</string>
+    <string name="permission_error_title">Permission Required</string>
+    <string name="permission_error_text">You must give permission to app</string>
 </resources>
