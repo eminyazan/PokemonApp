@@ -9,8 +9,8 @@ import retrofit2.http.Query
 interface ApiFactory {
     @GET(".")
     suspend fun getPokemons(
-        @Query("offset") offset: String = 20.toString(),
-        @Query("limit") limit: String = 20.toString(),
+        @Query("offset") offset: String,
+        @Query("limit") limit: String,
     ): ApiResponse
 
     @GET("/{id}")

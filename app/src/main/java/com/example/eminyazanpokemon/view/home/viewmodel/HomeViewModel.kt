@@ -13,30 +13,63 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) : ViewModel() {
 
+    //Data stuff
     val apiResponse: MutableLiveData<ApiResponse?> = MutableLiveData()
+    private var newApiResponse: ApiResponse? = null
 
-    val loading: MutableLiveData<Boolean> = MutableLiveData(true)
+    //Loading Stuff
+    val paginationLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    val initialLoading: MutableLiveData<Boolean> = MutableLiveData(true)
 
     val errorMessage: MutableLiveData<String?> = MutableLiveData()
 
-    //initial offset from api
-    private var _itemCount = 0
-
+    private var offset = 0
+    var pageNum = 0
     fun getPokemons() = viewModelScope.launch {
-        loading.value = true
-        when (val request = homeRepository.getPokemons(offset = _itemCount.toString())) {
+
+        if (newApiResponse == null) {
+            initialLoading.value = true
+        } else {
+            paginationLoading.value = true
+        }
+
+        when (val request = homeRepository.getPokemons(offset = offset.toString())) {
             is NetworkResult.Success -> {
-                apiResponse.value = request.data
-                loading.value = false
-                //increase item for pagination
-                _itemCount += 20
+                //initial loading
+                if (newApiResponse == null) {
+                    // if its null that mean is its initial query
+
+                    request.data?.let { apiRes ->
+                        // first query
+                        apiResponse.value = apiRes
+                        newApiResponse = apiRes
+                        println("view model api res length --->${apiResponse.value!!.results?.size}")
+                        offset += 20
+                        pageNum++
+                        initialLoading.value = false
+                    }
+
+
+                } else {
+                    //pagination query
+                    request.data?.let { reqData ->
+                        reqData.results?.let { newPokemons ->
+                            apiResponse.value?.results?.addAll(newPokemons)
+                        }
+                        newApiResponse = reqData
+                        println("view model api res length --->${apiResponse.value!!.results?.size}")
+                        offset += 20
+                        pageNum++
+                        paginationLoading.value = false
+                    }
+
+                }
             }
             is NetworkResult.Error -> {
                 errorMessage.value = request.message
-                loading.value = false
+                initialLoading.value = false
+                paginationLoading.value = false
             }
         }
     }
-
-
 }
