@@ -4,6 +4,7 @@
 
     <!-- data binding pokemon model -->
     <data>
+
         <variable
             name="pokemon"
             type="com.example.eminyazanpokemon.model.PokemonDetailModel" />
@@ -15,14 +16,17 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white"
+        >
 
         <ImageView
             android:id="@+id/ivWindowPokemonImage"
+            load_pokemon_image="@{String.valueOf(pokemon.id)}"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background"
-            android:contentDescription="image" />
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/tvWindowPokemonName"
@@ -37,7 +41,7 @@
             android:id="@+id/btnWindowCloseWindow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Close Window"
+            android:text="@string/close_window"
             android:textSize="19sp"
             android:textStyle="normal" />
 

@@ -16,10 +16,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(
 
     protected val binding: VB get() = _binding as VB
 
-
     protected abstract val viewModel: VM
-    protected abstract fun onCreateFinished()
-    protected abstract fun initializeListeners()
     protected abstract fun observeEvents()
 
     override fun onCreateView(
@@ -38,11 +35,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //initialize our functions
-        onCreateFinished()
-        initializeListeners()
         observeEvents()
-
     }
 
     override fun onDestroyView() {

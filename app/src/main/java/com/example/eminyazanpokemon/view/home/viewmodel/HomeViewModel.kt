@@ -43,7 +43,6 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
                         // first query
                         apiResponse.value = apiRes
                         newApiResponse = apiRes
-                        println("view model api res length --->${apiResponse.value!!.results?.size}")
                         offset += 20
                         pageNum++
                         initialLoading.value = false
@@ -57,7 +56,6 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
                             apiResponse.value?.results?.addAll(newPokemons)
                         }
                         newApiResponse = reqData
-                        println("view model api res length --->${apiResponse.value!!.results?.size}")
                         offset += 20
                         pageNum++
                         paginationLoading.value = false

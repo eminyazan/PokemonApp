@@ -1,24 +1,13 @@
 package com.example.eminyazanpokemon.utils
 
-import android.content.Context
+ import android.net.Uri
 import android.widget.ImageView
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import coil.load
 
-fun ImageView.loadImage(url: String?) {
-    val placeHolder = createPlaceHolder(this.context)
-    this.load(url) {
-        crossfade(true)
-        crossfade(500)
-        placeholder(placeHolder)
+fun ImageView.loadImage(url: String) {
+    this.load(Uri.parse(url)) {
+        this.crossfade(true)
+        this.crossfade(500)
     }
 }
 
-private fun createPlaceHolder(context: Context): CircularProgressDrawable {
-    return CircularProgressDrawable(context).apply {
-        strokeWidth = 12f
-        centerRadius = 40f
-        start()
-    }
-
-}

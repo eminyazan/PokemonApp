@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Emin Yazan Pokemon</string>
+    <string name="permission_error_title">İzin Gerekli!</string>
+    <string name="permission_error_text">Uygulamaya izin vermeniz gerekmektedir</string>
+    <string name="common_ok">Tamam</string>
+    <string name="image_description">Resim</string>
+    <string name="close_window">Pencereyi kapat</string>
+    <string name="there_is_no_internet_connection">İnternet bağlantısı yok</string>
+    <string name="retry">Yeniden Dene</string>
+    <string name="an_error_occurred">Hata oluştu</string>
+    <string name="give_me_overlay_permission">Pencere izni ver</string>
+    <string name="height">Boy: %s</string>
+    <string name="weight">Kilo: %s</string>
+    <string name="name">İsim: %s</string>
+    <string name="show_name">%s pencerede göster</string>
+    <string name="close_app">Uygulamayı kapat</string>
+</resources>

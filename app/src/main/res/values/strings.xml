@@ -1,8 +1,17 @@
 <resources>
     <string name="app_name">Emin Yazan Pokemon</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="common_ok">OK</string>
     <string name="permission_error_title">Permission Required</string>
     <string name="permission_error_text">You must give permission to app</string>
+    <string name="image_description">image</string>
+    <string name="close_window">Close Window</string>
+    <string name="an_error_occurred">An error occurred!</string>
+    <string name="retry">Retry!</string>
+    <string name="there_is_no_internet_connection">There is no internet connection!!</string>
+    <string name="give_me_overlay_permission">Give me overlay permission</string>
+    <string name="height">Height: %s</string>
+    <string name="weight">Weight: %s</string>
+    <string name="name">Name: %s</string>
+    <string name="show_name">Show %s in window</string>
+    <string name="close_app">Close Application</string>
 </resources>

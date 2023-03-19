@@ -13,7 +13,7 @@ interface ApiFactory {
         @Query("limit") limit: String,
     ): ApiResponse
 
-    @GET("/{id}")
-    suspend fun getPokemon(@Path("id") id: String): PokemonDetailModel
+    @GET("{id}")
+    suspend fun getPokemon(@Path(value = "id") id: String): PokemonDetailModel
 
 }
