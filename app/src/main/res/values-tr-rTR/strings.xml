@@ -15,4 +15,6 @@
     <string name="name">İsim: %s</string>
     <string name="show_name">%s pencerede göster</string>
     <string name="close_app">Uygulamayı kapat</string>
+    <string name="close">Kapalı</string>
+    <string name="open">Açık</string>
 </resources>
