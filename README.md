@@ -1,5 +1,5 @@
 # PokemonApp
-This app made by Muhammed Emin YAZAN for BGN Mobile company
+This app made by Muhammed Emin YAZAN
 
 ## PokemonApp Includes:
 #### - MVVM Pattern
